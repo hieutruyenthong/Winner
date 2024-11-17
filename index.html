@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kết quả ngẫu nhiên</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+    .logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .result {
+      font-size: 2em;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <img src="https://drive.google.com/file/d/1Kq3u_PQY4ZkYn_47sCl98xGZ_vtaRY6a/view?usp=sharing" class="logo">
+  <div id="result" class="result">Đang tải...</div>
+
+  <script>
+const apiUrl = "https://script.google.com/macros/s/AKfycbzMS8LazkafAGGYb1X40nl2hJinaavPVb62j1UnnrNT3xGwr2eHgEayTIoSooBcv2pYIg/exec";
+
+fetch(apiUrl, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  mode: 'cors'  // Đảm bảo chế độ CORS được bật
+})
+.then(response => response.json())
+.then(data => {
+  document.getElementById('result').innerText = data.result;
+})
+.catch(error => {
+  document.getElementById('result').innerText = "Lỗi tải dữ liệu!";
+  console.error(error);
+});
+
+  </script>
+</body>
+</html>
